@@ -63,7 +63,7 @@ function Snake() {
 			fruit.pickLocation();
 		}
 	}
-
+	document.getElementById('move').innerHTML = "GG ";
 	document.addEventListener('touchstart', handleTouchStart, false);        
 	document.addEventListener('touchmove', handleTouchMove, false);
 	var xDown = null;                                                        
@@ -91,23 +91,27 @@ function Snake() {
 	            this.xSpeed = -step * 1;
 				this.ySpeed = 0;
 				this.currentDir = direction;
+				document.getElementById('move').innerHTML += "SWIPED LEFT ";
 	        } else {
 	            /* right swipe */
 				this.xSpeed = step * 1;
 				this.ySpeed = 0;
-				this.currentDir = direction;
+				this.currentDir = direction;				
+				document.getElementById('move').innerHTML += "SWIPED RIGHT ";
 	        }                       
 	    } else {
 	        if ( yDiff > 0 ) {
 	            /* up swipe */ 
 				this.xSpeed = 0;
 				this.ySpeed = -step * 1;
-				this.currentDir = direction;
+				this.currentDir = direction;				
+				document.getElementById('move').innerHTML += "SWIPED UP ";
 	        } else { 
 	            /* down swipe */
 				this.xSpeed = 0;
 				this.ySpeed = step * 1;
-				this.currentDir = direction;
+				this.currentDir = direction;				
+				document.getElementById('move').innerHTML += "SWIPED DOWN ";
 	        }                                                                 
 	    }
 	    /* reset values */
