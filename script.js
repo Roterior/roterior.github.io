@@ -1,23 +1,24 @@
 const cnvs = document.getElementById('canvas');
 const cntx = canvas.getContext('2d');
-const step = 50;
-const rows = canvas.height / step;
-const cols = canvas.width / step;
-cnvs.width = 600;
-cnvs.height = 600;
-let record = 0;
+const step = 55;
+const rows = cnvs.height / step;
+const cols = cnvs.width / step;
+const speed = 250;
+var record = 0;
 var snake;
 (function setup() {
 	snake = new Snake();
 	fruit = new Fruit();
-	// if (fruit.x != undefined && fruit.y != undefined) {
 	fruit.pickLocation(snake);
-	// }
 	window.setInterval(() => {
 		cntx.clearRect(0, 0, cnvs.width, cnvs.height);
-		for (let i = 0; i < cnvs.width; i += step) {
-			for (let j = 0; j < cnvs.width; j += step) {
-				cntx.strokeRect(i, j, step, step);
+		for (var i = 0; i < cnvs.width; i += step) {
+			for (var j = 0; j < cnvs.width; j += step) {
+				cntx.fillStyle = "rgb(220, 170, 120)";
+				if (i % 2 == j % 2) {
+					cntx.fillStyle = "rgb(200, 150, 100)";
+				}
+				cntx.fillRect(i, j, step, step);
 			}
 		}
 		snake.checkCollision();
@@ -25,16 +26,18 @@ var snake;
 		snake.draw();
 		if (snake.eat(fruit)) {
 			fruit.pickLocation(snake);
-			if (record < snake.total) record = snake.total;
+			if (record < snake.total) {
+				record = snake.total;
+			}
 		}
 		fruit.draw();
 		document.getElementById('controls').innerHTML = `Score: ${snake.total}`;
 		document.getElementById('recs').innerHTML = `Record: ${record}`;
-	}, 200);
+	}, speed);
 }());
 window.addEventListener('keydown', changeDir);
 function changeDir(event) {
-	const direction = event.key.replace('Arrow', '');
+	var direction = event.key.replace('Arrow', '');
 	snake.changeDirection(direction);
 }
 

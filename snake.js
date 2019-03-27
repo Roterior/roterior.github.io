@@ -7,11 +7,9 @@ function Snake() {
 	this.tail = [];
 	this.currentDir = 'Right';
 	this.draw = function() {
-		cntx.fillStyle = "#00FF00";
 		for (let i = 0; i < this.tail.length; i++) {
-			cntx.fillStyle = "rgb(0, 255, 0)";
+			cntx.fillStyle = "rgb(50, 200, 50)";
 			cntx.fillRect(this.tail[i].x, this.tail[i].y, step, step);
-			cntx.strokeRect(this.tail[i].x, this.tail[i].y, step, step);
 		}
 		cntx.fillStyle = "rgb(50, 180, 50)";
 		cntx.fillRect(this.x, this.y, step, step);

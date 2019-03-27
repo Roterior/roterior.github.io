@@ -4,15 +4,13 @@ function Fruit() {
 	this.pickLocation = function(snake) {
 		this.x = (Math.floor(Math.random() * rows - 1) + 1) * step;
 		this.y = (Math.floor(Math.random() * cols - 1) + 1) * step;
-		// console.log(snake);
+		// console.log(this.x, this.y);
 		if (snake.x == this.x && snake.y == this.y) {
-			this.x = (Math.floor(Math.random() * rows - 1) + 1) * step;
-			this.y = (Math.floor(Math.random() * cols - 1) + 1) * step;
+			this.pickLocation(snake);
 		}
 		for (let i = 0; i < snake.tail.length; i++) {
 			if (snake.tail[i].x == this.x && snake.tail[i].y == this.y) {
-				this.x = (Math.floor(Math.random() * rows - 1) + 1) * step;
-				this.y = (Math.floor(Math.random() * cols - 1) + 1) * step;
+				this.pickLocation(snake);
 			}
 		}
 	}
