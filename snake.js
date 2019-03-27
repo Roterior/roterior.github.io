@@ -9,8 +9,11 @@ function Snake() {
 	this.draw = function() {
 		cntx.fillStyle = "#00FF00";
 		for (let i = 0; i < this.tail.length; i++) {
+			cntx.fillStyle = "rgb(0, 255, 0)";
 			cntx.fillRect(this.tail[i].x, this.tail[i].y, step, step);
+			cntx.strokeRect(this.tail[i].x, this.tail[i].y, step, step);
 		}
+		cntx.fillStyle = "rgb(50, 180, 50)";
 		cntx.fillRect(this.x, this.y, step, step);
 	}
 	this.update = function(fruit) {
@@ -51,16 +54,26 @@ function Snake() {
 		}
 		return false;
 	}
-	this.checkGameOver = function(fruit) {
+	this.gameOver = () => {
+		this.x = step;
+		this.y = step;
+		this.xSpeed = step * 1;
+		this.ySpeed = 0;
+		this.total = 0;
+		this.tail = [];
+		this.currentDir = 'Right';
+		fruit.pickLocation(snake);
+	}
+	this.checkGameOver = (fruit) => {
 		if (this.x > cnvs.width-10 || this.x < 0 || this.y > cnvs.height-10 || this.y < 0) {
-			this.x = step;
-			this.y = step;
-			this.xSpeed = step * 1;
-			this.ySpeed = 0;
-			this.total = 0;
-			this.tail = [];
-			this.currentDir = 'Right';
-			fruit.pickLocation();
+			this.gameOver();
+		}
+	}
+	this.checkCollision = function() {
+		for (let i = 0; i < this.tail.length; i++) {
+			if (this.x == this.tail[i].x && this.y == this.tail[i].y) {
+				this.gameOver();
+			}
 		}
 	}
 }
