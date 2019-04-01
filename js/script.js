@@ -1,5 +1,5 @@
 const cnvs = document.getElementById('canvas');
-const cntx = canvas.getContext('2d');
+const cntx = cnvs.getContext('2d');
 const step = 55;
 const rows = cnvs.height / step;
 const cols = cnvs.width / step;
@@ -40,7 +40,30 @@ function changeDir(event) {
 	var direction = event.key.replace('Arrow', '');
 	snake.changeDirection(direction);
 }
-
+function mainPage() {
+	let elemG = document.getElementById('games');
+	let elemS = document.getElementById('study');
+	let elemD = document.getElementById('developing');
+	elemG.style.display = "none";
+	elemS.style.display = "none";
+	elemD.style.display = "block";
+}
+function openStudy() {
+	let elemG = document.getElementById('games');
+	let elemS = document.getElementById('study');
+	let elemD = document.getElementById('developing');
+	elemG.style.display = "none";
+	elemS.style.display = "block";
+	elemD.style.display = "none";
+}
+function openGames() {
+	let elemS = document.getElementById('study');
+	let elemG = document.getElementById('games');
+	let elemD = document.getElementById('developing');
+	elemG.style.display = "block";
+	elemS.style.display = "none";
+	elemD.style.display = "none";
+}
 // Logic of Swipe Touches on Smartphones
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);

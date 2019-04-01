@@ -1,0 +1,76 @@
+body {
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #CCC;
+    font-family: "Arial", Georgia, Serif;
+    font-size: 0px;
+}
+header {
+    background-color: rgb(80,120,170);
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+    padding: 0 70px;
+    border-bottom: 2px solid #4872A3;
+    font-size: 16px;
+}
+section {
+    text-align: center;
+    font-size: 26px;
+    margin-top: 20px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.home {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    user-select: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.home img {
+    padding-right: 10px;
+}
+.button {
+  background-color: rgb(80,120,170);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+.button:hover {
+    background-color: rgb(100,140,190);
+    cursor: pointer;
+}
+
+
+
+
+.body, .wrapper {
+  /* Break the flow */
+  position: absolute;
+  top: 0px;
+  /* Give them all the available space */
+  width: 100%;
+  height: 100%;
+  /* Remove the margins if any */
+  margin: 0;
+  /* Allow them to scroll down the document */
+  overflow-y: hidden;
+}
+.body {
+  /* Sending body at the bottom of the stack */
+  z-index: 1;
+}
+.wrapper {
+  /* Making the wrapper stack above the body */
+  z-index: 2;
+}
